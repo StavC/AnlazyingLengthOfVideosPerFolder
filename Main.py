@@ -34,18 +34,23 @@ def main():
             my_clip.audio.reader.close_proc()
 
         list_of_videos.clear()
-        curr_sum_of_length = curr_sum_of_length / 60
+        curr_sum_of_length = curr_sum_of_length / 3600
        # print(curr_sum_of_length)
         list_of_videos_length.append(curr_sum_of_length)
         curr_sum_of_length = 0
    # print(list_of_videos_length)
 
     fig, ax = plt.subplots()
+    total_length=0
+    for length in list_of_videos_length:
+        total_length+=length
     plt.bar(paths_names, list_of_videos_length)
+
 
     plt.setp(ax.xaxis.get_majorticklabels(), rotation=45, ha="right")
     plt.gcf().subplots_adjust(bottom=0.25)
     plt.show()
+    print(f"Total hours are: {total_length}")
 
 
 if __name__ == '__main__':
